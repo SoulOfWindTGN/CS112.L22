@@ -10,5 +10,5 @@
 
 
 ## Member
-| STT | Họ tên | MSSV | E-mail | Github |
-| :---: | --- | --- | --- | --- |
+| STT | Họ tên | MSSV | Vai trò | E-mail | Github |
+| :---: | --- | --- | --- | --- | --- |
