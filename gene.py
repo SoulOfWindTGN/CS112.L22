@@ -13,7 +13,7 @@ class City:
     def __repr__(self):
         return f"({self.x}, {self.y})"
 
-# Tạo input với num_city là số lượng thành phố muốn tạo và range_x là khoảng tọa độ tối đa
+# Tạo input với num_city là số lượng thành phố muốn tạo và range là khoảng tọa độ tối đa
 def generate_input(num_city: int, range_: int) -> City:
     return [City(x = random.randint(1, range_), y = random.randint(1, range_)) for i in range(num_city)]
 
