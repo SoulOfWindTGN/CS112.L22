@@ -2,8 +2,6 @@ from gene import City, generate_input, path_cost
 import itertools
 import matplotlib.pyplot as plt
 
-fig,ax = plt.subplots()
-line, = ax.plot(0,0)
 def visualize(cities):
     fig = plt.figure()
     fig.suptitle('Brute force')
