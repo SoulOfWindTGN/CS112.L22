@@ -1,5 +1,3 @@
-import matplotlib.pyplot
-
 from gene import City, generate_input, path_cost
 import itertools
 import matplotlib.pyplot as plt
