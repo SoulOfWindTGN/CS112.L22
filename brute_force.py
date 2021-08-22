@@ -28,16 +28,16 @@ cities = generate_input(size,range)
 temp = list(itertools.permutations(cities))
 
 min_path_cost = 0
-route: City
+route = temp[0]
 for i in temp:
      cost = path_cost(i)
-     if min_path_cost < cost:
+     if min_path_cost > cost:
           route = i
           min_path_cost = cost
 
 visualize(route)
 print("min_cost =", min_path_cost)
 '''
-Mã giả tham khảo:
+Thuật toán tham khảo:
 https://www.geeksforgeeks.org/traveling-salesman-problem-tsp-implementation/
 '''
