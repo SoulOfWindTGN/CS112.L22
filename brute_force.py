@@ -18,16 +18,16 @@ def visualize(cities):
 
 #size là số lượng thành phố
 #range là khoảng cách tọa độ tối đa của x (trên trục hoành) và y(trên trục hoành) so với gốc tọa độ
-size = int(input())
-range = int(input())
+# size = int(input())
+# range = int(input())
 
 #Tạo ngẫu nhiên input
-cities = generate_input(size,range)
+cities = [City(5,6),City(3,2),City(4,8),City(5,10),City(4,20)]
 
 #Lập ra các hoán vị để vét hết các đường đi
 temp = list(itertools.permutations(cities))
 
-min_path_cost = 0
+min_path_cost = float('inf')
 route = temp[0]
 for i in temp:
      cost = path_cost(i)
@@ -38,6 +38,6 @@ for i in temp:
 visualize(route)
 print("min_cost =", min_path_cost)
 '''
-Thuật toán tham khảo:
+Mã giả tham khảo:
 https://www.geeksforgeeks.org/traveling-salesman-problem-tsp-implementation/
 '''
