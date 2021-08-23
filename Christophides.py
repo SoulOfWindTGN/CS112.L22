@@ -3,7 +3,6 @@ Thuật toán tham khảo: https://en.wikipedia.org/wiki/Christofides_algorithm
 Code tham khảo: https://github.com/Retsediv/ChristofidesAlgorithm/blob/master/christofides.py
 '''
 
-
 from gene import City, generate_input, path_cost
 import matplotlib.pyplot as plt
 
@@ -28,6 +27,7 @@ class UnionFind:
         self.weights = {}
         self.parents = {}
 
+    #Phương thức get
     def __getitem__(self, object):
         if object not in self.parents:
             self.parents[object] = object
@@ -87,24 +87,20 @@ def find_odd_vertexes(MST):
 
     return vertexes
 
-# tìm cặp ghép đầy đủ có trọng số nhỏ nhất
 def minimum_weight_matching(MST, G, odd_vert):
-    while odd_vert:
-        v = odd_vert.pop()
-        length = float("inf")
-        u = 1
-        closest = 0
-        for u in odd_vert:
-            if v != u and G[v][u] < length:
-                length = G[v][u]
-                closest = u
+    vertices = []
+    for W, u, v in sorted((G[u][v], u, v)
+                          for u in G
+                          for v in G[u]
+                          if v in odd_vert and u in odd_vert):
+        if u not in vertices and v not in vertices:
+            length = G[v][u]
+            MST.append((u, v, length))
+            vertices.append(u)
+            vertices.append(v)
 
-        MST.append((v, closest, length))
-        odd_vert.remove(closest)
-
-#Tìm chu trình Euler
 def find_eulerian_tour(MatchedMSTree, G):
-    # Tìm neighbours
+    # find neigbours
     neighbours = {}
     for edge in MatchedMSTree:
         if edge[0] not in neighbours:
@@ -118,6 +114,7 @@ def find_eulerian_tour(MatchedMSTree, G):
 
     # print("Neighbours: ", neighbours)
 
+    # finds the hamiltonian circuit
     start_vertex = MatchedMSTree[0][0]
     EP = [neighbours[start_vertex][0]]
 
@@ -163,7 +160,7 @@ def visualize(cities):
     plt.plot(x_list, y_list, 'g')
     plt.show(block=True)
 
-cities = [City(5,6),City(3,2),City(4,8),City(5,10),City(4,20)]
+cities = [City(5,6),City(3,2),City(4,8),City(5,10),City(4,20),City(5,25),City(4,30),City(8,20)]
 print(cities)
 graph = build_graph(cities)
 print(graph)
@@ -177,28 +174,25 @@ print(mst)
 eulerian_tour = find_eulerian_tour(mst, graph)
 print("Eulerian tour: ", eulerian_tour)
 
-#In ra đường đi bằng cách bỏ qua các đỉnh trùng (Chu trình Hamilton
 current = eulerian_tour[0]
 path = [current]
 visited = [False] * len(eulerian_tour)
-
-
+visited[current] = True
 length = 0
 
 for v in eulerian_tour[1:]:
     if not visited[v]:
         path.append(v)
         visited[v] = True
-
         length += graph[current][v]
         current = v
 
-#Lấy đường đi để visualize
+path.append(path[0])
+length += graph[path[-2]][path[-1]]
 visual = []
-for i in range(len(path)):
-    visual.append(cities[path[i]])
+for i in path:
+    visual.append(cities[i])
 
-#In kết quả
 print("Result path: ", path)
 print("Result length of the path: ", length)
 visualize(visual)
