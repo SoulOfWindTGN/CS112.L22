@@ -28,7 +28,6 @@ class UnionFind:
         self.weights = {}
         self.parents = {}
 
-    #Phương thức get
     def __getitem__(self, object):
         if object not in self.parents:
             self.parents[object] = object
@@ -119,7 +118,6 @@ def find_eulerian_tour(MatchedMSTree, G):
 
     # print("Neighbours: ", neighbours)
 
-    # Tìm chu trình Hamilton
     start_vertex = MatchedMSTree[0][0]
     EP = [neighbours[start_vertex][0]]
 
@@ -180,7 +178,7 @@ print(mst)
 eulerian_tour = find_eulerian_tour(mst, graph)
 print("Eulerian tour: ", eulerian_tour)
 
-#In ra đường đi bằng cách bỏ qua các đỉnh trùng
+#In ra đường đi bằng cách bỏ qua các đỉnh trùng (Chu trình Hamilton
 current = eulerian_tour[0]
 path = [current]
 visited = [False] * len(eulerian_tour)
