@@ -141,7 +141,6 @@ def find_eulerian_tour(MatchedMSTree, G):
 
     return EP
 
-# Xóa cạnh trùng
 def remove_edge_from_matchedMST(MatchedMST, v1, v2):
 
     for i, item in enumerate(MatchedMST):
