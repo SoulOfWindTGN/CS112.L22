@@ -56,7 +56,7 @@ Hàm tìm cây bao trùm sử dụng thuật toán Kruskal có độ phức tạ
 
 Hàm tìm đỉnh bậc lẻ của cây bao trùm **T** dùng 2 vòng lặp: 1 vòng dùng đếm tần suất đỉnh xuất hiện trên cây bao trùm, 1 vòng duyệt tất cả đỉnh để chọn ra các đỉnh có tần suất xuất hiện là số lẻ -> Độ phức tạp **O(n) = n^2**
 
-Hàm tìm minimum_perfect_matching có độ phức tạp 2*m*m*log(m)*m*(m-1)*2m với m là số đỉnh bậc lẻ đã trong cây **T** -> **O(m) = (m^5)log(m)** < **(n^5)log(n)**
+Hàm tìm minimum_perfect_matching có độ phức tạp 2m*m*log(m)*m*(m-1)*2m với m là số đỉnh bậc lẻ đã trong cây **T** -> **O(m) = (m^5)log(m)** < **(n^5)log(n)**
 
 Hàm tìm chu trình Euler có độ phức tạp **O(E_H) = E_H^2 (E_H là số cạnh của đa đồ thị H)** < **n^2**
 
