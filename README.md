@@ -52,12 +52,12 @@ Giả sử có **n** thành phố:
 
 Hàm xây dựng đồ thị: dùng 2 vòng lặp duyệt qua tất cả **n** thành phố -> độ phức tạp **n^2** -> **O(n) = n^2**
 
-Hàm tìm cây bao trùm sử dụng thuật toán Kruskal có độ phức tạp **E*Log(V)**. Trong đó **E** là số cạnh và **V** là số đỉnh. Vì đồ thị của bài toán đang xét là một đồ thị đầy đủ vô hướng nên dễ dàng tính được **E = (V-1)/2 = (n-1)/2** -> độ phức tạp **((n-1)/2)Log(n)** -> **O(n) = nlog(n)**
+Hàm tìm cây bao trùm sử dụng thuật toán Kruskal có độ phức tạp **E*Log(V)**. Trong đó **E** là số cạnh và **V** là số đỉnh. Vì đồ thị của bài toán đang xét là một đồ thị đầy đủ vô hướng nên dễ dàng tính được **E = V(V-1)/2 = n(n-1)/2** -> độ phức tạp **(n(n-1)/2)Log(n)** -> **O(n) = (n^2)log(n)**
 
 Hàm tìm đỉnh bậc lẻ của cây bao trùm **T** dùng 2 vòng lặp: 1 vòng dùng đếm tần suất đỉnh xuất hiện trên cây bao trùm, 1 vòng duyệt tất cả đỉnh để chọn ra các đỉnh có tần suất xuất hiện là số lẻ -> Độ phức tạp **O(n) = n^2**
 
-Hàm tìm minimum_perfect_matching có độ phức tạp tính dựa theo m là số đỉnh bậc lẻ đã trong cây **T** -> **O(m) = (m^5)log(m)** < **(n^5)log(n)**
+Hàm tìm minimum_perfect_matching có độ phức tạp tính dựa theo m là số đỉnh bậc lẻ đã trong cây **T** -> **((n^2)2m) + m(m-1)log(m(m-1)) + m(m-1)2m ~ (n^2)m < n^3** (Do m<n)
 
 Hàm tìm chu trình Euler có độ phức tạp **O(E_H) = E_H^2 (E_H là số cạnh của đa đồ thị H)** < **n^2**
 
-Nhìn chung độ phức tạp của thuật toán nhỏ hơn **(n^5)log(n)**
+Nhìn chung độ phức tạp của thuật toán là **(n^3)**
